@@ -4,8 +4,8 @@ SubredditScraper
 A Python script that scrapes all submissions with a minimum age from a given 
 subreddit (comments included) and uploads the scraped data to a given mySQL 
 database. Sends an SMS notification to a given phone number when upload is 
-complete. To avoid redundancy, the script checks the mySQL database to make
-sure that each submission has not already been scraped.
+complete. To avoid redundancy, the script checks the mySQL database to ensure
+that found submissions have not already been scraped.
 
 (For example, if you set the minimum age to 1296000 (15 days in seconds) and
 the target subreddit to datascience, the script will scrape all datascience 
