@@ -25,5 +25,6 @@ Before running the script, you need to set up the config.ini file by entering
 your Twilio credentials, mySQL database credentials, praw credentials, target 
 subreddit, and minimum submission age.
 
-Note: You can automate this script by adding it to a scehduling program such
-as Windows Task Scheduler.
+Note: This script was built for automated use. For example, you can upload the
+script to an Amazon Web Services EC2 instance and schedule the script to run 
+every x number of hours or minutes using Windows Task Scheduler.
