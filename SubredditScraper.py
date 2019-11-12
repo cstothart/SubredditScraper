@@ -276,7 +276,6 @@ class SubredditScraper:
         self.sendSMS(report_msg)
         self._log("DONE!")
         
-        
     def start(self):
         try:
             self.setup()
