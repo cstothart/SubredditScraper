@@ -1,7 +1,7 @@
-SubredditScraper
+Subreddit Scraper
 =============
 
-A Python script that scrapes all submissions with a minimum age from a given 
+A web scraper that scrapes all Reddit submissions with a minimum age from a given 
 subreddit (comments included) and uploads the scraped data to a given mySQL 
 database. Sends an SMS notification to a given phone number when upload is 
 complete. To avoid redundancy, the script checks the mySQL database to ensure
@@ -27,4 +27,4 @@ subreddit, and minimum submission age.
 
 Note: This script was built for automated use. For example, you can upload the
 script to an Amazon Web Services EC2 instance and schedule the script to run 
-every x number of hours or minutes using Windows Task Scheduler.
+every x number of hours or minutes using a cron job.
