@@ -1,7 +1,7 @@
 """ SubredditScraper
 
 Author:  Cary Stothart
-Date:    16 Oct 2019
+Date:    24 March 2020
 
 """
 
@@ -67,6 +67,15 @@ class SubredditScraper:
                  );"
         self._log("Creating comments table if it does not already exist...")
         self.dbCursor.execute(query)
+
+    def _createAuthorsTable(self):
+        query = "CREATE TABLE IF NOT EXISTS authors (\
+                 id INT NOT NULL AUTO_INCREMENT, \
+                 author VARCHAR(255) UNIQUE NOT NULL, \
+                 PRIMARY KEY (id) \
+                 );"
+        self._log("Creating authors table if it does not already exist...")
+        self.dbCursor.execute(query)
     
     def _connectToDatabase(self):
         self.db = mysql.connector.connect(
@@ -82,6 +91,7 @@ class SubredditScraper:
     def _setupDatabaseTables(self):
         self._createSubmissionTable()
         self._createCommentsTable()
+        self._createAuthorsTable()
         
     def _createReport(self, num_submissions):
         rep_msg = ""
