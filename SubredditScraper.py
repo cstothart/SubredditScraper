@@ -123,6 +123,12 @@ class SubredditScraper:
         rep_msg = (rep_msg + "Total # words:\n" + 
                    str(round(self.dbCursor.fetchall()[0][0], 0)))
         return(rep_msg)
+
+    def _addAuthorsToAuthorsTable(self):
+        self.dbCursor.execute("INSERT IGNORE INTO authors (author) " +
+                              "SELECT DISTINCT author FROM submissions;")
+        self.dbCursor.execute("INSERT IGNORE INTO authors (author) " +
+                              "SELECT DISTINCT author FROM comments;")
         
     def scrapeSubmission(self, submission_id):
         """ Scrape the given submission.
@@ -282,6 +288,7 @@ class SubredditScraper:
             self.scrapeSubmission(id)
             self.scrapeSubmissionComments(id)
             time.sleep(1)
+        self._addAuthorsToAuthorsTable()
         report_msg = self._createReport(num_submissions)
         self.sendSMS(report_msg)
         self._log("DONE!")
