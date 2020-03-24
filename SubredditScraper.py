@@ -125,10 +125,13 @@ class SubredditScraper:
         return(rep_msg)
 
     def _addAuthorsToAuthorsTable(self):
+        self._log("Adding new authors to authors table...")
         self.dbCursor.execute("INSERT IGNORE INTO authors (author) " +
                               "SELECT DISTINCT author FROM submissions;")
+        self.db.commit()
         self.dbCursor.execute("INSERT IGNORE INTO authors (author) " +
                               "SELECT DISTINCT author FROM comments;")
+        self.db.commit()
         
     def scrapeSubmission(self, submission_id):
         """ Scrape the given submission.
